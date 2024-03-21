@@ -27,6 +27,7 @@ import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.PropertySource;
 
 import io.debezium.relational.history.FileDatabaseHistory;
+import org.springframework.stereotype.Component;
 
 @Configuration
 @ComponentScan("org.openmrs.eip.mysql.watcher")
@@ -88,5 +89,5 @@ public class WatcherConfig {
 		
 		return customPropSource;
 	}
-	
+
 }
