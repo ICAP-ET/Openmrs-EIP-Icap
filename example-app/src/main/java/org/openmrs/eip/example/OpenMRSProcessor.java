@@ -18,12 +18,14 @@ public class OpenMRSProcessor implements Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
         Message message = exchange.getMessage();
-        if(Objects.nonNull(exchange.getProperty("event"))){
-            Event event =  (Event)exchange.getProperty("event");
-            if(Objects.nonNull(event.getCurrentState())){
-                Map<String,Object> state =  event.getCurrentState();
+        if(Objects.nonNull(message.getBody()) && message.getBody() instanceof Event){
+            Event event = (Event) message.getBody();
+            String tableName = event.getTableName();
+            int primaryKeyId = Integer.parseInt(event.getPrimaryKeyId());
+            String identifier = event.getIdentifier();
 
-            }
+            // Send these values to another class
+            //AnotherClass.processData(tableName, primaryKeyId, identifier);
         }
 
 

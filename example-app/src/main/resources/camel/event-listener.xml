@@ -1,0 +1,10 @@
+<routes xmlns="http://camel.apache.org/schema/spring">
+
+    <!--It's important to set the error handler ref to watcherErrorHandler -->
+    <route id="icap" errorHandlerRef="watcherErrorHandler">
+        <from uri="openmrs-watcher:icap" />
+
+        <log message="Received db event: ${body}" loggingLevel="DEBUG" />
+    </route>
+
+</routes>
